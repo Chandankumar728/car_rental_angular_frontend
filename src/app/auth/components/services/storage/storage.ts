@@ -57,6 +57,12 @@ static isCustomer(): boolean {
   return role === "CUSTOMER";
 }
 
+//logout method to clear storage  
+static logout(): void {
+  window.localStorage.removeItem(USER);
+  window.localStorage.removeItem(TOKEN);
+}
+
 
 
  

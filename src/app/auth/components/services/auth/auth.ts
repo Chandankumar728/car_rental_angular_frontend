@@ -36,4 +36,7 @@ export class Auth {
     // Sends POST request to: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     return this.http.post(url, loginRequest);
   }
+
+  
+
 }

@@ -1,2 +1,38 @@
-<router-outlet />
-<h1>Car Rental Managemnt system</h1>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <a class="navbar-brand" href="#">
+    <i class="bi bi-car-front-fill"></i> Car Rental System
+  </a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cars">Cars </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/bookings">Bookings</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/customers">Customers</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Sign Up</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="btn btn-outline-light ms-3" routerLink="/login">Login</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

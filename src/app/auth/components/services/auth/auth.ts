@@ -27,4 +27,13 @@ export class Auth {
     // Sends POST request to: http://localhost:8080/api/auth/signup
     return this.http.post(url, signUpRequest);
   }
+
+  login(loginRequest: any) {
+    const url = BASE_URL + "/api/auth/login";
+    console.log(' Auth Service - Making API call to:', url);
+    console.log(' Auth Service - Request payload:', loginRequest);
+
+    // Sends POST request to: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    return this.http.post(url, loginRequest);
+  }
 }

@@ -9,17 +9,17 @@
 
               <h3 class="text-uppercase text-center mb-4 fw-bold" style="font-size:1.3rem;">Login</h3>
 
-              <form>
+              <form [formGroup]="loginForm">
 
                 <div class="form-outline mb-3">
-                  <input type="email" class="form-control form-control-sm" placeholder="Your Email" />
+                  <input type="email" class="form-control form-control-sm" placeholder="Your Email" formControlName="email"/>
                 </div>
 
                 <div class="form-outline mb-3">
-                  <input type="password" class="form-control form-control-sm" placeholder="Password" />
+                  <input type="password" class="form-control form-control-sm" placeholder="Password" formControlName="password"/>
                 </div>
 
-                <button type="button" class="btn btn-success w-100 btn-sm mb-2">
+                <button type="button" class="btn btn-success w-100 btn-sm mb-2" (click)="login()" [disabled]="loginForm.invalid">
                   Login
                 </button>
 

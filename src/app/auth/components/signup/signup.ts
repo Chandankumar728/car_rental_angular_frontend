@@ -56,7 +56,7 @@ export class Signup implements OnInit {
     }
 
     this.isSpinning = true;
-    console.log('⏳ Starting registration process...');
+    console.log(' Starting registration process...');
 
     const registerData = {
       name: this.signupForm.value.name,
@@ -64,9 +64,7 @@ export class Signup implements OnInit {
       password: this.signupForm.value.password
     };
 
-    console.log(' Sending registration data:', registerData);
    
-
     this.authService.register(registerData)
       .subscribe({
         next: (response) => {

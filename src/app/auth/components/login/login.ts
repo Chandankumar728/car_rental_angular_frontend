@@ -29,7 +29,7 @@ export class Login {
 
   login(){
     console.log(this.loginForm.value)
-     this.AuthService.login(this.loginForm.value).subscribe((res=>{
+     this.AuthService.login(this.loginForm.value).subscribe((res=>{ 
       console.log(res);
      }))
   }

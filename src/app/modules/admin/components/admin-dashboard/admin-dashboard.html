@@ -1,1 +1,38 @@
-<p>admin-dashboard works!</p>
+<div class="container mt-3">
+  <h4>All Cars</h4>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Brand</th>
+        <th>Type</th>
+        <th>Modal Year</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through each car and display it -->
+      <tr *ngFor="let car of cars; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ car.brand }}</td>
+        <td>{{ car.type }}</td>
+        <td>{{ car.modalYear }}</td>
+        <td>{{ car.price }}</td>
+        <td>
+          <!-- Show car image if available -->
+          <img *ngIf="car.image" [src]="car.image" alt="Car Image" width="80" />
+        </td>
+        <td>
+          <!-- Edit button triggers editCar() -->
+          <!-- <button class="btn btn-sm btn-primary me-1">Edit</button> -->
+          <button class="btn btn-sm btn-primary me-1" (click)="editCar(car)">Edit</button>
+          <!-- Delete button triggers deleteCar() -->
+          <button class="btn btn-sm btn-danger" (click)="deleteCar(car.id)">Delete</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

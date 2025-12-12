@@ -18,6 +18,14 @@ export class AdminService {
         });
     }
 
+    //get all cars
+    getAllCars() {
+        const url = BASE_URL + "/api/admin/get-all-cars";
+        return this.http.get(url, {
+            headers: this.createAuthorizationHeader()
+        });
+    }
+
     createAuthorizationHeader(): HttpHeaders {
         let authHeaders: HttpHeaders = new HttpHeaders();
         return authHeaders.set(
@@ -25,4 +33,35 @@ export class AdminService {
             'Bearer ' + localStorage.getItem('token')
         );
     }
+
+   
+  // Example: /api/admin/car/123
+ 
+  getCarById(carId: string) {
+    const url = `${BASE_URL}/api/admin/car/${carId}`;
+    return this.http.get(url, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  
+  // Example: /api/admin/update-car/123
+ 
+  updateCar(carId: string, carData: any) {
+    const url = `${BASE_URL}/api/admin/update-car/${carId}`;
+    return this.http.put(url, carData, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+ 
+  // DELETE Car
+  
+
+  deleteCar(carId: string) {
+    const url = `${BASE_URL}/api/admin/delete-car/${carId}`;
+    return this.http.delete(url, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 }

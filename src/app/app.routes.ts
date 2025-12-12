@@ -3,6 +3,7 @@ import { Signup } from './auth/components/signup/signup';
 import { Login } from './auth/components/login/login';
 
 export const routes: Routes = [
+    // {path:"", redirectTo:"/register", pathMatch:"full"},
     {path:"", redirectTo:"/register", pathMatch:"full"},
     {path:"register",component:Signup},
     {path:"login",component:Login},

@@ -22,7 +22,7 @@
         <td>{{ car.price }}</td>
         <td>
           <!-- Show car image if available -->
-          <img *ngIf="car.image" [src]="car.image" alt="Car Image" width="80" />
+          <img *ngIf="car.returnImage" [src]="car.returnImage" alt="Car Image" width="80" />
         </td>
         <td>
           <!-- Edit button triggers editCar() -->
@@ -36,3 +36,79 @@
     </tbody>
   </table>
 </div>
+
+<!-- Edit Modal -->
+<div class="modal" [class.show]="showEditModal" [style.display]="showEditModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Car</h5>
+        <button type="button" class="btn-close" (click)="closeModal()">×</button>
+      </div>
+      <form [formGroup]="editCarForm" (ngSubmit)="updateCarFromModal()">
+        <div class="modal-body">
+          <!-- <div class="mb-2">
+            <label class="form-label">Brand</label>
+            <select class="form-select form-select-sm" formControlName="brand">
+              <option value="Toyota">Toyota</option>
+              <option value="Honda">Honda</option>
+              <option value="BMW">BMW</option>
+              <option value="Mercedes">Mercedes</option>
+            </select>
+          </div> -->
+          <div class="mb-2">
+            <label class="form-label">Brand</label>
+            <select class="form-select form-select-sm" formControlName="brand">
+             <option *ngFor="let car of cars" [value]="car.brand">{{ car.brand }}</option>
+              
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Type</label>
+            <select class="form-select form-select-sm" formControlName="type">
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="Coupe">Coupe</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Modal Year</label>
+            <input type="date" class="form-control form-control-sm" formControlName="modalYear">
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Price</label>
+            <input type="number" class="form-control form-control-sm" formControlName="price">
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Color</label>
+            <select class="form-select form-select-sm" formControlName="color">
+              <option value="Black">Black</option>
+              <option value="White">White</option>
+              <option value="Blue">Blue</option>
+              <option value="Red">Red</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Transmission</label>
+            <select class="form-select form-select-sm" formControlName="transmission">
+              <option value="Automatic">Automatic</option>
+              <option value="Manual">Manual</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Description</label>
+            <textarea class="form-control form-control-sm" rows="3" formControlName="description"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!editCarForm.valid">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" *ngIf="showEditModal" (click)="closeModal()"></div>
+
+

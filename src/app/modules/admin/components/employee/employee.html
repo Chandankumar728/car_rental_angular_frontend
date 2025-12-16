@@ -1,0 +1,144 @@
+<div class="container">
+  <div class="header">
+    <h1>Employee Management</h1>
+    <button class="btn-add" (click)="openAddModal()">
+      <span class="icon">+</span> Add Employee
+    </button>
+  </div>
+
+  <div class="list-container">
+    <div *ngFor="let employee of employees; let i = index" class="list-item">
+      <div class="employee-info">
+        <h3>{{ employee.name }}</h3>
+        <p><strong>Position:</strong> {{ employee.position }}</p>
+        <p><strong>Email:</strong> {{ employee.email }}</p>
+        <p><strong>Phone:</strong> {{ employee.phoneNumber }}</p>
+        <p><strong>Hire Date:</strong> {{ employee.hireDate }}</p>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-view" (click)="openViewModal(employee)" title="View">👁️</button>
+        <button class="btn-edit" (click)="openEditModal(employee)" title="Edit">✏️</button>
+        <button class="btn-delete" (click)="deleteEmployee(employee.id)" title="Delete">🗑️</button>
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Modal -->
+  <div *ngIf="showAddModal" class="modal-overlay" (click)="closeAddModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Add New Employee</h2>
+        <button class="btn-close" (click)="closeAddModal()">×</button>
+      </div>
+
+      <form>
+        <label>
+          Name
+          <input type="text" [(ngModel)]="formData.name" name="name" required />
+        </label>
+
+        <label>
+          Email
+          <input type="email" [(ngModel)]="formData.email" name="email" required />
+        </label>
+
+        <label>
+          Position
+          <input type="text" [(ngModel)]="formData.position" name="position" required />
+        </label>
+
+        <label>
+          Phone Number
+          <input type="tel" [(ngModel)]="formData.phoneNumber" name="phoneNumber" required />
+        </label>
+
+        <label>
+          Address
+          <input type="text" [(ngModel)]="formData.address" name="address" required />
+        </label>
+
+        <label>
+          Hire Date
+          <input type="date" [(ngModel)]="formData.hireDate" name="hireDate" required />
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-primary" (click)="addEmployee()">Add Employee</button>
+          <button type="button" class="btn-cancel" (click)="closeAddModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div *ngIf="showEditModal" class="modal-overlay" (click)="closeEditModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2 class="edit-title">Edit Employee</h2>
+        <button class="btn-close" (click)="closeEditModal()">×</button>
+      </div>
+
+      <form>
+        <label>
+          Name
+          <input type="text" [(ngModel)]="formData.name" name="name" required />
+        </label>
+
+        <label>
+          Email
+          <input type="email" [(ngModel)]="formData.email" name="email" required />
+        </label>
+
+        <label>
+          Position
+          <input type="text" [(ngModel)]="formData.position" name="position" required />
+        </label>
+
+        <label>
+          Phone Number
+          <input type="tel" [(ngModel)]="formData.phoneNumber" name="phoneNumber" required />
+        </label>
+
+        <label>
+          Address
+          <input type="text" [(ngModel)]="formData.address" name="address" required />
+        </label>
+
+        <label>
+          Hire Date
+          <input type="date" [(ngModel)]="formData.hireDate" name="hireDate" required />
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-edit-submit" (click)="updateEmployee()">
+            Update Employee
+          </button>
+          <button type="button" class="btn-cancel" (click)="closeEditModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Modal -->
+  <div *ngIf="showViewModal && selectedEmployee" class="modal-overlay" (click)="closeViewModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2 class="view-title">Employee Details</h2>
+        <button class="btn-close" (click)="closeViewModal()">×</button>
+      </div>
+
+      <div class="view-details">
+        <p><strong>Name:</strong> {{ selectedEmployee.name }}</p>
+        <p><strong>Email:</strong> {{ selectedEmployee.email }}</p>
+        <p><strong>Position:</strong> {{ selectedEmployee.position }}</p>
+        <p><strong>Phone Number:</strong> {{ selectedEmployee.phoneNumber }}</p>
+        <p><strong>Address:</strong> {{ selectedEmployee.address }}</p>
+        <p><strong>Hire Date:</strong> {{ selectedEmployee.hireDate }}</p>
+      </div>
+
+      <button class="btn-view-close" (click)="closeViewModal()">Close</button>
+    </div>
+  </div>
+</div>

@@ -64,4 +64,49 @@ export class AdminService {
       headers: this.createAuthorizationHeader()
     });
   }
+
+  // Employee Management APIs can be added here 
+  getAllEmployees() {
+    const url = `${BASE_URL}/api/admin/employees`;
+    return this.http.get(url, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  //add employee
+  addEmployee(employeeData: any) {
+    const url = `${BASE_URL}/api/admin/employees`;
+    return this.http.post(url, employeeData, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  //delete employee
+  deleteEmployee(employeeId: number) {
+    const url = `${BASE_URL}/api/admin/employees/${employeeId}`;
+    return this.http.delete(url, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  //update employee
+  updateEmployee(employeeId: number, employeeData: any) {
+    const url = `${BASE_URL}/api/admin/employees/${employeeId}`;
+    return this.http.put(url, employeeData, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  //get details of a single employee by id
+  getEmployeeById(employeeId: number) {
+    const url = `${BASE_URL}/api/admin/employees/${employeeId}`;
+    return this.http.get(url, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+ 
+
+  
+
 }
